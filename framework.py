@@ -46,7 +46,7 @@ for i in database:
                   details["password"] = suggest_password
                   print("Your password has been updated")
                   enter_password = False
-                  new_user = False
+               break
       database.append(details)
       enter_new_user = input("Would you like to enter another user: ")
       if enter_new_user == "Yes":
