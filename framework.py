@@ -8,14 +8,12 @@ for i in database:
    first_name = input("Please, enter your first name: ")
    last_name = input("Please, enter your last name: ")
    email = input("Please, enter your email address: ")
-   f_name_spread = list(first_name)
-   l_name_spread = list(last_name)
    import string
    import random
    f = ''
    for i in range(5):
       f = f + random.choice(string.ascii_letters)
-   suggest_password =(f_name_spread[0] + f_name_spread[1] + l_name_spread[-2] + l_name_spread[-1] + f)
+   suggest_password =(first_name[0:2] + last_name[-3:-1] + f)
    print('Welcome ' + first_name + ', Your default password is ' + suggest_password)
    counter = counter + 1
    each_user = {
@@ -43,8 +41,8 @@ for i in database:
                enter_password = False
          password_use = False
    database.append(each_user)
-   enter_new_user = input("Would you like to enter another user: ")
-   if enter_new_user == "Yes":
+   enter_new_user = input("Would you like to enter another user? Type 'Yes' or 'No' only: ")
+   if enter_new_user ==  "yes":
       pass
    elif enter_new_user == "No":
       new_user = False
