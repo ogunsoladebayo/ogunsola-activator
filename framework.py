@@ -29,7 +29,7 @@ for i in database:
                   "email" : email}
       password_choice = input("Do you wish to change this password? Type 'Yes' or 'No' only: ")
       password_use = True
-      while password_use:
+      while password_use == True:
          if password_choice == "No":
             details["password"] = suggest_password
             print("Your details have been saved")
@@ -39,14 +39,14 @@ for i in database:
             enter_password = True
             while enter_password:
                suggest_password = input("Enter a new password not less than 7 characters: ")
-               if len(suggest_password) < 6 :
+               if len(suggest_password) < 7 :
                   print("Password is less than 7 characters")
                   # suggest_password = input("Enter a new password longer than or equal to 7 characters: ")
                else:
                   details["password"] = suggest_password
                   print("Your password has been updated")
                   enter_password = False
-               break
+            password_use = False
       database.append(details)
       enter_new_user = input("Would you like to enter another user: ")
       if enter_new_user == "Yes":
