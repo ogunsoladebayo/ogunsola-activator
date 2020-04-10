@@ -1,12 +1,14 @@
 # from password import password
-database = {}
-plus = True
-while plus:
-   counter = 0
-   add = counter + 1
-   index = 'user' + str(add)   
+database = [0]
+details = {}
+counter = 0
+new = True
+for i in database:
+   counter = counter + 1
+   details['ID'] = counter
    new_user = True
    while new_user:
+      # index = 'user' + str(counter + 1)
       first_name = input("Please, enter your first name: ")
       last_name = input("Please, enter your last name: ")
       email = input("Please, enter your email address: ")
@@ -32,6 +34,7 @@ while plus:
             details["password"] = suggest_password
             print("Your details have been saved")
             password_use = False
+            new_user = False
          elif password_choice == "Yes":
             enter_password = True
             while enter_password:
@@ -43,11 +46,13 @@ while plus:
                   details["password"] = suggest_password
                   print("Your password has been updated")
                   enter_password = False
-      database[index] = details
+                  new_user = False
+      database.append(details)
       enter_new_user = input("Would you like to enter another user: ")
-      if enter_new_user == "No":
+      if enter_new_user == "Yes":
+         new_user = True
+      elif enter_new_user == "No":
          new_user = False
-         plus = False
-      elif enter_new_user == "Yes":
-         pass
-print(database)
+         new = False
+         print(database)
+   break
