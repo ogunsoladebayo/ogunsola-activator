@@ -39,14 +39,14 @@ for i in database:
    
    
    while password_use:
-      if password_choice == "No":
+      if password_choice.lower() == "no":
          # save password if user does not wish to change generated password
          each_user["password"] = suggest_password
          print("Your each_user have been saved")
          password_use = False
 
 
-      elif password_choice == "Yes":
+      elif password_choice.lower() == "yes":
          # setting new password
          enter_password = True
 
@@ -67,9 +67,9 @@ for i in database:
    
    # to register another user
    enter_new_user = input("Would you like to enter another user? Type 'Yes' or 'No' only: ")
-   if enter_new_user ==  "yes":
+   if enter_new_user.lower() ==  "yes":
       pass
-   elif enter_new_user == "No":
+   elif enter_new_user.lower() == "no":
       # breaks entire for loop
       print(database)
       break
