@@ -21,9 +21,10 @@ for i in database:
    first_name = input("Please, enter your first name: ")
    last_name = input("Please, enter your last name: ")
    email = input("Please, enter your email address: ")
+   password = func_password(first_name, last_name)
+
    # updates counter value that will be used as ID for the user
    counter = counter + 1
-   password = func_password(first_name, last_name)
    # prints name and password generated               
    print('Welcome ' + first_name + ', Your default password is ' + password)
    
@@ -38,7 +39,7 @@ for i in database:
 
 
    
-   # Asks user if it wants to change the password
+   # Asks user if they want to change the password
    password_choice = input("Do you wish to change this password? Type 'Yes' or 'No' only: ")
    password_use = True
    
