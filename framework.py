@@ -3,6 +3,16 @@ database = ["All user details: "]
 # individual user variable
 each_user = {}
 counter = 0
+# generate random password
+def func_password(first_name, last_name):
+   import string
+   import random
+   f = ''
+   for i in range(5):
+      f = f + random.choice(string.ascii_letters)
+   suggest_password =(first_name[0:2] + last_name[-2:] + f)
+   return suggest_password
+
 
 
 # this for loop allow collection of details multiple times
@@ -13,24 +23,19 @@ for i in database:
    email = input("Please, enter your email address: ")
    # updates counter value that will be used as ID for the user
    counter = counter + 1
+   password = func_password(first_name, last_name)
+   # prints name and password generated               
+   print('Welcome ' + first_name + ', Your default password is ' + password)
+   
    # stores all user details collected in a dictionary
-
-
    each_user = {
                "ID" : counter,
                "First name" : first_name,
                "last name" : last_name,
-               "email" : email}
-               
-   # generate random password
-   import string
-   import random
-   f = ''
-   for i in range(5):
-      f = f + random.choice(string.ascii_letters)
-   suggest_password =(first_name[0:2] + last_name[-3:-1] + f)
-   # prints name and password generated
-   print('Welcome ' + first_name + ', Your default password is ' + suggest_password)
+               "email" : email,
+               "password" : password
+               }
+
 
    
    # Asks user if it wants to change the password
@@ -41,8 +46,8 @@ for i in database:
    while password_use:
       if password_choice.lower() == "no":
          # save password if user does not wish to change generated password
-         each_user["password"] = suggest_password
-         print("Your each_user have been saved")
+         each_user["password"] = password
+         print("Your details have been saved")
          password_use = False
 
 
@@ -51,14 +56,14 @@ for i in database:
          enter_password = True
 
          while enter_password:
-            suggest_password = input("Enter a new password not less than 7 characters: ")
+            password = input("Enter a new password not less than 7 characters: ")
             # when password is less than 7 characters
-            if len(suggest_password) < 7 :
+            if len(password) < 7 :
                print("Password is less than 7 characters")
 
             else:
                # if password is greater than or equal to 7 characters
-               each_user["password"] = suggest_password
+               each_user["password"] = password
                print("Your password has been updated")
                enter_password = False
          password_use = False
